@@ -77,7 +77,7 @@ public class Main {
         //public String getNomeDaRua()
         System.out.println(e1.getNomeDaRua().equals("Bla") ? "[OK] Método Endereco.getNomeDaRua()" : "[NOK] Método Endereco.getNomeDaRua()");
 
-        //public void setCidade(String cidde);
+        //public void setCidade(String cidade);
         e1.setCidade("São Leopoldo");
         System.out.println("[OK] Método Endereco.setCidade()");
 
