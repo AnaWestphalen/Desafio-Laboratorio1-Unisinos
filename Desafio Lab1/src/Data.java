@@ -48,14 +48,8 @@ public class  Data{
         return diasPorMes;
     }
 
-    public boolean verificaAnoBissexto(){
-        if (ano % 400 == 0) {
-            return true;
-        } else if (ano % 100 != 0 || ano % 4 == 0) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean verificaAnoBissexto() {
+        return (ano % 400 == 0) || ((ano % 100 != 0) && (ano % 4 == 0));
     }
 
     public int getDia() {
