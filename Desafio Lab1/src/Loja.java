@@ -60,6 +60,8 @@ public class Loja {
                 "Nome: " +getNome() + '\'' +
                 ", Quantidade de funcionários: " +getQuantidadeFuncionarios() +
                 ", Salário base do funcionário: " +getSalarioBaseFuncionario() +
+                ", Endereço: " +getEndereco() +
+                ", Data de fundação: " +getDataFundacao() +
                 " }";
     }
 
