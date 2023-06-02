@@ -46,6 +46,8 @@ public class Principal {
         int quantidadeFuncionarios = Teclado.leInt();
         System.out.print("Digite o salário base do funcionário: ");
         double salarioBaseFuncionario = Teclado.leDouble();
+        System.out.print("Digite a quantidade de produtos: ");
+        int quantidadeMaximaProdutos = Teclado.leInt();
 
         System.out.println("Digite o endereço da loja:");
         System.out.print("Nome da rua: ");
@@ -75,7 +77,7 @@ public class Principal {
 
         Data dataFundacao = new Data(dia, mes, ano);
 
-        return new Loja(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao);
+        return new Loja(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao, quantidadeMaximaProdutos);
     }
 
     private static Produto criarProduto() {
