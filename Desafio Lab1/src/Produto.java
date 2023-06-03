@@ -3,7 +3,9 @@ public class Produto {
     private double preco;
     private Data dataValidade;
 
-    public Produto(String nome, double preco, Data dataValidade){
+    public Produto(String nome,
+                   double preco,
+                   Data dataValidade){
         this.nome = nome;
         this.preco = preco;
         this.dataValidade = dataValidade;

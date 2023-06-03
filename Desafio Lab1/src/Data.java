@@ -14,9 +14,7 @@ public class  Data{
     private void validacaoData(){
         boolean dataValida = true;
 
-        if (mes < 1 || mes > 12){
-            dataValida = false;
-        } else if (dia < 1 || dia > diasPorMes()) {
+        if ((mes < 1 || mes > 12) || (dia < 1 || dia > diasPorMes())){
             dataValida = false;
         }
 
@@ -49,7 +47,10 @@ public class  Data{
     }
 
     public boolean verificaAnoBissexto() {
-        return (ano % 400 == 0) || ((ano % 100 != 0) && (ano % 4 == 0));
+        if ((ano % 400 == 0) || ((ano % 100 != 0) && (ano % 4 == 0))){
+            return true;
+        }else
+            return false;
     }
 
     public int getDia() {

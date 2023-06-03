@@ -4,21 +4,33 @@ public class Loja {
     private double salarioBaseFuncionario;
     private Endereco endereco;
     private Data dataFundacao;
+    private Produto[] estoqueProdutos;
 
-    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco, Data dataFundacao){
+    public Loja(String nome,
+                int quantidadeFuncionarios,
+                double salarioBaseFuncionario,
+                Endereco endereco,
+                Data dataFundacao,
+                int quantidadeMaximaProdutos){
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = salarioBaseFuncionario;
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
+        this.estoqueProdutos = new Produto[quantidadeMaximaProdutos];
     }
 
-    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao){
+    public Loja(String nome,
+                int quantidadeFuncionarios,
+                Endereco endereco,
+                Data dataFundacao,
+                int quantidadeMaximaProdutos){
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = -1;
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
+        this.estoqueProdutos = new Produto[quantidadeMaximaProdutos];
     }
 
     public String getNome(){
@@ -33,9 +45,17 @@ public class Loja {
         return salarioBaseFuncionario;
     }
 
-    public Endereco getEndereco() { return endereco; }
+    public Endereco getEndereco() {
+        return endereco;
+    }
 
-    public Data getDataFundacao() { return dataFundacao; }
+    public Data getDataFundacao() {
+        return dataFundacao;
+    }
+
+    public Produto[] getEstoqueProdutos() {
+        return estoqueProdutos;
+    }
 
     public void setNome(String nome){
         this.nome = nome;
@@ -49,19 +69,34 @@ public class Loja {
         this.salarioBaseFuncionario = salarioBaseFuncionario;
     }
 
-    public void setEndereco(Endereco endereco) { this.endereco = endereco; }
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 
     public void setDataFundacao(Data dataFundacao) {
         this.dataFundacao = dataFundacao;
     }
 
+    public void setEstoqueProdutos(Produto[] estoqueProdutos) {
+        this.estoqueProdutos = estoqueProdutos;
+    }
+
     public String toString(){
+        String produtoString = "";
+        for (Produto produto : estoqueProdutos) {
+            if (produto != null) {
+                produtoString += produto.getNome() + ", ";
+            }
+        }
+        produtoString = produtoString.isEmpty() ? "" : produtoString.substring(0, produtoString.length() - 2);
+
         return "Loja { " +
                 "Nome: " +getNome() + '\'' +
                 ", Quantidade de funcionários: " +getQuantidadeFuncionarios() +
                 ", Salário base do funcionário: " +getSalarioBaseFuncionario() +
                 ", Endereço: " +getEndereco() +
                 ", Data de fundação: " +getDataFundacao() +
+                ", Estoque de produtos: [" + produtoString + "]" +
                 " }";
     }
 
@@ -77,5 +112,39 @@ public class Loja {
         } else {
             return 'G';
         }
+    }
+
+    public void imprimeProdutos() {
+        if (estoqueProdutos.length == 0) {
+            System.out.println("Não há produtos no estoque.");
+        } else {
+            System.out.println("Produtos da loja:");
+            for (Produto produto : estoqueProdutos) {
+                if (produto != null) {
+                    System.out.println(produto.toString());
+                }
+            }
+        }
+    }
+
+    public boolean insereProduto(Produto produto) {
+        for (int i = 0; i < estoqueProdutos.length; i++) {
+            if (estoqueProdutos[i] == null) {
+                estoqueProdutos[i] = produto;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean removeProduto(String nomeProduto) {
+        for (int i = 0; i < estoqueProdutos.length; i++) {
+            Produto produto = estoqueProdutos[i];
+            if (produto != null && produto.getNome().equalsIgnoreCase(nomeProduto)) {
+                estoqueProdutos[i] = null;
+                return true;
+            }
+        }
+        return false;
     }
 }
